@@ -1,5 +1,5 @@
 let runningTotal = 0;    // 계산 결과값
-let buffer = 0; // 버퍼값
+let buffer = '0'; // 버퍼값 - screen
 let previousOperator; // 연산자
 
 const screen = document.querySelector('.screen')
@@ -24,7 +24,7 @@ function handleSymbol(symbol){
             if(previousOperator === null){
                 return;
             }
-            fluschOperation(parseInt(buffer));
+            flushOperation(parseInt(buffer));
             previousOperator = null;
             buffer = runningTotal;
             runningTotal = 0;
@@ -34,12 +34,12 @@ function handleSymbol(symbol){
             if(buffer.length === 1){
                 buffer = '0'
             }else{
-                buffer = buffer.toString(0, buffer.length - 1);
+                buffer = buffer.slice(0,-1);
             }
             break;
-            
+
         case '+':
-        case '-':
+        case '−':
         case '×':
         case '÷':
             handleMath(symbol);
@@ -47,7 +47,7 @@ function handleSymbol(symbol){
     }
 }
 
-function handleMath(symbol){
+function handleMath(symbol){ // 연산자를 클릭했다면
     if(buffer === '0'){
         return;
     }
@@ -56,14 +56,15 @@ function handleMath(symbol){
 
     if(runningTotal === 0){
         runningTotal = intBuffer;
+
     }else {
-        fluschOperation(intBuffer);
+        flushOperation(intBuffer);
     }
     previousOperator = symbol;
-    buffer = 0;
+    buffer = '0';
 }
 
-function fluschOperation(intBuffer){
+function flushOperation(intBuffer){
     if(previousOperator === '+'){
         runningTotal += intBuffer;
     
