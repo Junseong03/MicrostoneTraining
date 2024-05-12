@@ -6,6 +6,7 @@
 
 [Clone Coding Resource]
 - https://www.youtube.com/watch?v=sBJmRD7kNTk
+- https://www.youtube.com/watch?v=PlpM2LJWu-s
 
 [Books Resource]
 - 아는 만큼 보이는 프런트엔드 개발
